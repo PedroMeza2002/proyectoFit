@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const WeightControlPage = () => {
     const [weight, setWeight] = useState('');
@@ -24,19 +25,30 @@ const WeightControlPage = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-green-500">
-            <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md text-black">
-                <h1 className="text-3xl font-bold mb-4">Control de Peso</h1>
+        <div style={{ backgroundColor: '#f0f0f0', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div className="container" style={{ width: '80%', backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                <h1 className="title" style={{ color: '#333', marginBottom: '20px', textAlign: 'center' }}>Control de Peso</h1>
                 <form onSubmit={handleSubmit} className="mb-4">
-                    <div className="mb-4">
-                        <label className="block text-sm font-semibold mb-1">Peso (kg):</label>
-                        <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" />
+                    <div className="field">
+                        <label className="label" style={{ color: '#333' }}>Peso (kg):</label>
+                        <div className="control">
+                            <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} className="input is-primary" style={{ backgroundColor: 'var(--bulma-table-cell-background-color)', color: 'black' }} />
+                        </div>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-semibold mb-1">Altura (cm):</label>
-                        <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" />
+                    <div className="field">
+                        <label className="label" style={{ color: '#333' }}>Altura (cm):</label>
+                        <div className="control">
+                            <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} className="input is-primary" style={{ backgroundColor: 'var(--bulma-table-cell-background-color)', color: 'black' }} />
+                        </div>
                     </div>
-                    <button type="submit" disabled={loading} className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Calcular</button>
+                    <div className="field is-grouped">
+                        <div className="control" style={{ marginRight: '20px' }}>
+                            <button type="submit" disabled={loading} className={`button is-primary ${loading && 'is-loading'}`} style={{ width: '100%' }}>Calcular</button>
+                        </div>
+                        <div className="control">
+                            <Link to="/perfil" className="button is-success" style={{ width: '100%' }}>Ir a inicio</Link>
+                        </div>
+                    </div>
                 </form>
                 {loading && <p className="text-gray-600">Cargando...</p>}
                 {error && <p className="text-red-600">{error}</p>}
