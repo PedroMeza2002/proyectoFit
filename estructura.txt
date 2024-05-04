@@ -1,0 +1,35 @@
+client
+    -src
+        -pages
+            -DietPage.jsx
+            -LoginPage.jsx
+            -ProfilePage.jsx
+            -RegisterPage.jsx
+            -WeightControlPage.jsx
+            -Trotar.jsx
+        -App.jsx
+        -main.jsx
+server
+    -controllers
+        -auth.controller.js
+        -datos.js
+        -recipe.controller.js
+        -trotar.controller.js
+    -models
+        -datosUsusarios.js
+        -user.model.js
+        -recipe.model.js
+        -trotar.model.js
+    -routes
+        -auth.routes.js
+        -recipe.routes.js
+        -tasks.routes.js
+        -trotar.routes.js
+    -schemas
+        -auth.schema.js
+    -app.js
+    -config.js
+    -db.js
+    -index.js
+
+
